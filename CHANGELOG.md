@@ -5,6 +5,9 @@ All notable changes to the "bottlejs-extension-pack" extension will be documente
 
 ## [Unreleased]
 
+## [0.0.5] - 2023-05-02
+- Added logger to extension
+
 ## [0.0.4] - 2023-05-02
 - Added auto completion for `bottle.container` functions
 

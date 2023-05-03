@@ -3,22 +3,24 @@ import { find, first, kebabCase, toLower, trimEnd } from 'lodash';
 import * as path from 'path';
 import {
     CancellationToken, Definition, DefinitionProvider, Location, LocationLink, Position,
-    ProviderResult, Range, TextDocument, Uri, window, workspace
+    ProviderResult, Range, TextDocument, Uri, workspace
 } from 'vscode';
 
 import { getWorkspaceRootPath } from '../utils';
+import { Logger } from '../logger';
 
 export class NanoDefinitionProvider implements DefinitionProvider {
     private FILE_MATCHING_STRATEGY = { EXACT_MATCH: 'EXACT_MATCH', LAST_RESORT: 'LAST_RESORT' };
     private defaultConfig: any;
+    private logger: Logger;
 
-    constructor(defaultConfig) {
-        // TODO: [HIGH] apply logger here
-        this.defaultConfig = defaultConfig;
+    constructor(params: { extensionContext?: any; config?: any; logger: Logger, }) {
+        this.defaultConfig = params.config;
+        this.logger = params.logger;
     }
 
     getDILevel(word = '') {
-        const config = workspace.getConfiguration('bottlejs-extension-pack');
+        const config = workspace.getConfiguration(this.defaultConfig.name);
         const di_layer_list = config.get('config.di_layer_list') || this.defaultConfig.di_layer_list;
         word = toLower(word);
         return find(di_layer_list, (di_layer) => word.includes(di_layer));
@@ -45,6 +47,7 @@ export class NanoDefinitionProvider implements DefinitionProvider {
         // Iterate over the directory entries
         switch (strategy) {
             case this.FILE_MATCHING_STRATEGY.EXACT_MATCH: {
+                this.logger.debug(`Searching for ${fileName} in ${rootPath} with strategy: ${strategy}`);
                 for (const entry of entries) {
                     const entryPath = path.join(rootPath, entry.name);
 
@@ -61,6 +64,7 @@ export class NanoDefinitionProvider implements DefinitionProvider {
                 break;
             }
             case this.FILE_MATCHING_STRATEGY.LAST_RESORT: {
+                this.logger.debug(`Searching for ${fileName} in ${rootPath} with strategy: ${strategy}`);
                 // Cases where naming convention cannot find the file
                 const diLevel = this.getDILevel(foundVariableName);
                 for (const entry of entries) {
@@ -131,11 +135,10 @@ export class NanoDefinitionProvider implements DefinitionProvider {
                     return new Location(diDocument!.uri, range);
                 }
             }
-            return new Location(diDocument!.uri, new Position(0, 0));
+            const location = new Location(diDocument!.uri, new Position(0, 0));
+            return location;
         }
     }
-
-
 
     provideDefinition(document: TextDocument, position: Position, token: CancellationToken): ProviderResult<Definition | LocationLink[]> {
         const pattern = /[\w-]+/;
@@ -163,7 +166,5 @@ export class NanoDefinitionProvider implements DefinitionProvider {
 
         return undefined;
     }
-
-
 
 }

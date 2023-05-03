@@ -48,5 +48,5 @@ By turning off this flag, auto-completion suggestions will appear at the top of 
 
 ## Release Notes
 
-### 0.0.4
-Added auto completion for `bottle.container` functions
+### 0.0.5
+Added logger to extension

@@ -11,11 +11,13 @@ import {
     CompletionItemKind,
 } from 'vscode';
 import { forEach, isEmpty, kebabCase, trim } from 'lodash';
-import { existsSync, readFileSync, readdir, readdirSync } from 'fs';
+import { existsSync, readFileSync, readdirSync } from 'fs';
 
 import { getWorkspaceRootPath } from '../utils';
+import { Logger } from '../logger';
 
 export class NanoCompletionProvider implements CompletionItemProvider {
+    private logger: Logger;
     public defaultPredefinedDirs = ['service', 'controller', 'manager'];
     public specialPredefinedDirs = [
         { mapKey: 'client', result: 'service-client' },
@@ -24,8 +26,8 @@ export class NanoCompletionProvider implements CompletionItemProvider {
     ];
     public lastResult: CompletionItem[][] = [];
 
-    constructor(extensionContext?: ExtensionContext, config?: any) {
-        // TODO: [HIGH] apply logger here
+    constructor(params: { extensionContext?: ExtensionContext; config?: any; logger: Logger }) {
+        this.logger = params.logger;
     }
 
     constructDirName(fileName: string): string | undefined {
@@ -126,8 +128,8 @@ export class NanoCompletionProvider implements CompletionItemProvider {
                         });
                     } else {
                         // looping through all file dirName and find which registerFunction start key words contains the instanceName
-                        // this.logger?.warn(`Cannot find file ${filePath}`);
-                        // this.logger?.warn(`Start searching for ${instanceName} under ${dirName} directory`);
+                        this.logger.warn(`Cannot find file ${filePath}`);
+                        this.logger.warn(`Start searching for ${instanceName} under ${dirName} directory`);
                         let foundFileName = '';
                         const filesUnderDir = readdirSync(`${workspaceRootPath}/${dirName}`);
                         foundFileName = this.findRegisteredInstanceName(`${workspaceRootPath}/${dirName}`, filesUnderDir, instanceName);
@@ -143,7 +145,7 @@ export class NanoCompletionProvider implements CompletionItemProvider {
                         });
                     }
                 } else {
-                    // this.logger?.warn(`Cannot find dir name for ${ fileName }`);
+                    this.logger.warn(`Cannot find dir name for ${fileName}`);
                 }
             }
         });
@@ -152,7 +154,7 @@ export class NanoCompletionProvider implements CompletionItemProvider {
             this.lastResult.push(completionItems);
         }
 
-        // this.logger?.debug(`Created suggestion list ${ JSON.stringify(completionItems) } `);
+        this.logger.debug(`Created suggestion list ${JSON.stringify(completionItems)} `);
         return completionItems;
     }
 
