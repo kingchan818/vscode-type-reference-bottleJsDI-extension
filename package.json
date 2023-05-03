@@ -3,7 +3,7 @@
   "displayName": "BottleJS Extension Pack",
   "description": "Implementation of the GoToDefinition function for BottleJS",
   "publisher": "NanoInsure Development Team",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "engines": {
     "vscode": "^1.77.0"
   },
@@ -13,7 +13,7 @@
   "activationEvents": [
     "onLanguage:javascript"
   ],
-  "main": "./extension.js",
+  "main": "/out/extension.js",
   "contributes": {
     "commands": [
       {
@@ -27,22 +27,30 @@
     ]
   },
   "scripts": {
-    "lint": "eslint .",
-    "pretest": "npm run lint",
-    "test": "node ./test/runTest.js"
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js",
+    "build:extension": "npx vsce package && mv *.vsix out"
   },
   "dependencies": {
     "lodash": "^4.17.21"
   },
   "devDependencies": {
     "@types/glob": "^8.1.0",
+    "@types/lodash": "^4.14.194",
     "@types/mocha": "^10.0.1",
-    "@types/node": "16.x",
+    "@types/node": "^18.16.3",
     "@types/vscode": "^1.77.0",
+    "@typescript-eslint/eslint-plugin": "^5.56.0",
+    "@typescript-eslint/parser": "^5.56.0",
     "@vscode/test-electron": "^2.3.0",
     "eslint": "^8.36.0",
     "glob": "^8.1.0",
     "mocha": "^10.2.0",
-    "typescript": "^4.9.5"
+    "typescript": "^4.9.5",
+    "vsce": "^2.15.0"
   }
 }
