@@ -12,12 +12,14 @@ Configs can be set in the global settings.json in the following format:
 > // Add the following property:
 
 ``` json
-..., // Other settings
-"bottlejs-extension-pack.config": {
-  // di_layer_list is the list of DI items
-  "di_layer_list": ["controller", "service", "manager", "dal", "dao"]
+{
+  "bottlejs-extension-pack.config": {
+    "di_layer_list": ["controller", "service", "manager", "dal", "dao"]
+  }
 }
 ```
+> di_layer_list is the list of items that are DI-Instance
+
 ## Known Issues
 
 The extension supports mainly NanoInsure backend developers and uses heuristic on finding the path the dependency-injection. Any other non-usual pattern might not be supported.
