@@ -1,0 +1,3 @@
+{
+  "di_layer_list": ["controller", "service", "manager", "dal", "dao"]
+}
