@@ -5,6 +5,9 @@ All notable changes to the "bottlejs-extension-pack" extension will be documente
 
 ## [Unreleased]
 
+## [0.0.4] - 2023-05-02
+- Added auto completion for `bottle.container` functions
+
 ## [0.0.3] - 2023-05-02
 - Refactored JS file to TypeScript
 

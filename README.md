@@ -48,14 +48,5 @@ By turning off this flag, auto-completion suggestions will appear at the top of 
 
 ## Release Notes
 
-### 0.0.1
-Initial release of bottlejs-extension-pack for Nano Backend Services.
-
-### 0.0.2
-Support json extension settings.
-
-### 0.0.3
-Refactored JS file to TypeScript for improved maintainability
-
 ### 0.0.4
-Add Auto Completion
+Added auto completion for `bottle.container` functions
