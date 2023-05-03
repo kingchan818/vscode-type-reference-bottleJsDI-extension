@@ -33,3 +33,6 @@ Initial release of bottlejs-extension-pack for Nano Backend Services.
 
 ### 0.0.2
 Support json extension settings.
+
+### 0.0.3
+Refactored JS file to TypeScript for improved maintainability

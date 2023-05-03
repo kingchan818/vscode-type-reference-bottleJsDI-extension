@@ -5,6 +5,9 @@ All notable changes to the "bottlejs-extension-pack" extension will be documente
 
 ## [Unreleased]
 
+## [0.0.3] - 2023-05-02
+- Refactored JS file to TypeScript
+
 ## [0.0.2] - 2023-05-02
 - Updates Documentations
 - Allowing to read json configs
