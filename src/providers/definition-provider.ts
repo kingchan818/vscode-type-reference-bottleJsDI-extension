@@ -6,11 +6,14 @@ import {
     ProviderResult, Range, TextDocument, Uri, window, workspace
 } from 'vscode';
 
+import { getWorkspaceRootPath } from '../utils';
+
 export class NanoDefinitionProvider implements DefinitionProvider {
     private FILE_MATCHING_STRATEGY = { EXACT_MATCH: 'EXACT_MATCH', LAST_RESORT: 'LAST_RESORT' };
     private defaultConfig: any;
 
     constructor(defaultConfig) {
+        // TODO: [HIGH] apply logger here
         this.defaultConfig = defaultConfig;
     }
 
@@ -100,24 +103,9 @@ export class NanoDefinitionProvider implements DefinitionProvider {
         return null;
     }
 
-    getWorkspaceRootPath() {
-        const editor = window.activeTextEditor;
-        if (!editor) {
-            return undefined;
-        }
-        // Extract source file path
-        const currentFilePath = editor.document.uri.fsPath;
-        const sourceFileKeyword = 'src';
-        const srcIndex = currentFilePath.lastIndexOf(sourceFileKeyword);
-        if (srcIndex >= 0) {
-            // To include src
-            return currentFilePath.substring(0, srcIndex + sourceFileKeyword.length);
-        }
-    }
-
     async getFileLocation(file, functionName) {
         const diNameInFS = `${kebabCase(file)}.js`;
-        const rootPath = this.getWorkspaceRootPath();
+        const rootPath = getWorkspaceRootPath();
 
         if (!rootPath || !fs.existsSync(rootPath)) {
             return undefined;

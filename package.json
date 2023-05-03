@@ -3,7 +3,7 @@
   "displayName": "BottleJS Extension Pack",
   "description": "Implementation of the GoToDefinition function for BottleJS",
   "publisher": "NanoInsure Development Team",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "engines": {
     "vscode": "^1.77.0"
   },
