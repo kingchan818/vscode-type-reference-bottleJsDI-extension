@@ -1,9 +1,9 @@
 {
-  "name": "bottlejs-extension-pack",
+  "name": "nano-backend-language-support",
   "displayName": "BottleJS Extension Pack",
   "description": "Implementation of the GoToDefinition function for BottleJS",
   "publisher": "NanoInsure Development Team",
-  "version": "0.0.5",
+  "version": "1.0.0",
   "engines": {
     "vscode": "^1.77.0"
   },
@@ -15,17 +15,45 @@
   ],
   "main": "/out/extension.js",
   "contributes": {
-    "commands": [
-      {
-        "command": "bottlejs-extension-pack.quotes",
-        "title": "Nano Quotes to support You"
+    "configuration": {
+      "title": "nano-backend-language-support",
+      "properties": {
+        "nano-backend-language-support.config.di_layer_list": {
+          "type":"array",
+          "default": ["controller", "service", "manager", "dal", "dao"],
+          "items": {
+            "type": "string"
+          },
+          "description": "List of DI layers to be used for the extension"
+        },
+        "nano-backend-language-support.config.log_level":{
+            "type": "string",
+            "default": "INFO",
+            "enum": [
+              "INFO",
+              "DEBUG"
+            ],
+            "description": "Set the logger level"
+          }
+        }
       },
-      {
-        "command": "bottlejs-extension-pack.editConfig",
-        "title": "BottleJs Extension Pack: Configure Json File"
-      }
-    ]
-  },
+      "commands": [
+        {
+          "command": "nano-backend-language-support.quotes",
+          "title": "Nano Quotes to support You"
+        },
+        {
+          "command": "nano-backend-language-support.editConfig",
+          "title": "BottleJs Extension Pack: Configure Json File"
+        }
+      ],
+      "snippets": [
+        {
+          "language": "javascript",
+          "path": "./snippets/javascript.json"
+        }
+      ]
+    },
   "scripts": {
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",

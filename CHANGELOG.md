@@ -1,9 +1,12 @@
 # Change Log
 
-All notable changes to the "bottlejs-extension-pack" extension will be documented in this file.
+All notable changes to the "nano-backend-language-support" extension will be documented in this file.
 
 
 ## [Unreleased]
+
+## [1.0.0] - 2023-05-02
+Added Snippets for Nano Backend Developers
 
 ## [0.0.5] - 2023-05-02
 - Added logger to extension

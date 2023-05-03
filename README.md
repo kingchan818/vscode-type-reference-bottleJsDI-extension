@@ -1,10 +1,11 @@
-# bottlejs-extension-pack README
+# nano-backend-language-support README
 
-This is the extension "bottlejs-extension-pack" for backend framework in Nano.
+This is the extension "nano-backend-language-support" for backend framework in Nano.
 
 ## Features
 1. Type Definition for bottlejs (Jump to definition)
 2. Auto Completion for bottlejs 
+3. Snippets for Nano Backend
 
 ## Note when using the extension
 1. The extension will only work if the file is in the same folder as the bottlejs instance.
@@ -18,7 +19,7 @@ Configs can be set in the global settings.json in the following format:
 
 ``` json
 {
-  "bottlejs-extension-pack.config": {
+  "nano-backend-language-support.config": {
     "di_layer_list": ["controller", "service", "manager", "dal", "dao"]
   }
 }
@@ -48,5 +49,5 @@ By turning off this flag, auto-completion suggestions will appear at the top of 
 
 ## Release Notes
 
-### 0.0.5
-Added logger to extension
+### 1.0.0
+Added Snippets for Nano Backend Developers

@@ -13,7 +13,7 @@ export function activate(context: vscode.ExtensionContext) {
     const defaultConfigPath = path.join(context.extensionPath, 'defaultConfig.json');
     const defaultConfig = JSON.parse(fs.readFileSync(defaultConfigPath, 'utf-8'));
     const workspaceConfig = vscode.workspace.getConfiguration(defaultConfig.name);
-    const logger = new Logger(defaultConfig.name, workspaceConfig.log_level || defaultConfig.log_level);
+    const logger = new Logger(defaultConfig.name, workspaceConfig.config.log_level || defaultConfig.log_level);
 
     const constructorParams = {
         extensionContext: context,
@@ -36,6 +36,7 @@ export function activate(context: vscode.ExtensionContext) {
         )
     );
     logger.info('Extension activated...');
+    logger.info(`Current configuration: ${JSON.stringify(defaultConfig)}}`);
 }
 
 // This method is called when your extension is deactivated
