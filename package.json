@@ -68,7 +68,7 @@
     "pretest": "npm run compile && npm run lint",
     "lint": "eslint src --ext ts",
     "test": "node ./out/test/runTest.js",
-    "build:extension": "vsce package -o out",
+    "build:extension": "vsce package -o release",
     "build:readmeHtml": "npx markdown README.md > index.html",
     "build": "npm run build:extension && npm run build:readmeHtml"
   },
