@@ -1,6 +1,6 @@
 {
-  "name": "nano-backend-language-support",
-  "displayName": "Nano Backend Language support",
+  "name": "nit-backend-language-support",
+  "displayName": "NIT Backend Language support",
   "description": "Implementation of the GoToDefinition function for BottleJS",
   "publisher": "NanoInsure Development Team",
   "version": "1.0.0",
@@ -16,9 +16,9 @@
   "main": "/out/extension.js",
   "contributes": {
     "configuration": {
-      "title": "nano-backend-language-support",
+      "title": "nit-backend-language-support",
       "properties": {
-        "nano-backend-language-support.config.di_layer_list": {
+        "nit-backend-language-support.config.di_layer_list": {
           "type": "array",
           "default": [
             "controller",
@@ -32,7 +32,7 @@
           },
           "description": "List of DI layers to be used for the extension"
         },
-        "nano-backend-language-support.config.log_level": {
+        "nit-backend-language-support.config.log_level": {
           "type": "string",
           "default": "INFO",
           "enum": [
@@ -45,11 +45,11 @@
     },
     "commands": [
       {
-        "command": "nano-backend-language-support.quotes",
+        "command": "nit-backend-language-support.quotes",
         "title": "Nano Quotes to support You"
       },
       {
-        "command": "nano-backend-language-support.editConfig",
+        "command": "nit-backend-language-support.editConfig",
         "title": "BottleJs Extension Pack: Configure Json File"
       }
     ],

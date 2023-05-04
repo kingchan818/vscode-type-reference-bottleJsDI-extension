@@ -1,6 +1,6 @@
-# nano-backend-language-support README
+# nit-backend-language-support README
 
-This is the extension "nano-backend-language-support" for backend framework in Nano.
+This is the extension "nit-backend-language-support" for backend framework in Nano.
 
 ## Features
 1. Type Definition for bottlejs (Jump to definition)
@@ -27,7 +27,7 @@ Configs can be set in the global settings.json in the following format:
 
 ``` json
 {
-  "nano-backend-language-support.config": {
+  "nit-backend-language-support.config": {
     "di_layer_list": ["controller", "service", "manager", "dal", "dao"]
   }
 }

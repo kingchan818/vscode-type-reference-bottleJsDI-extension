@@ -1,5 +1,5 @@
 {
-  "name": "nano-backend-language-support",
+  "name": "nit-backend-language-support",
   "logger_level": "INFO",
   "di_layer_list": ["controller", "service", "manager", "dal", "dao"]
 }

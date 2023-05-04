@@ -1,6 +1,6 @@
 # Change Log
 
-All notable changes to the "nano-backend-language-support" extension will be documented in this file.
+All notable changes to the "nit-backend-language-support" extension will be documented in this file.
 
 
 ## [Unreleased]
