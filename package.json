@@ -60,6 +60,7 @@
       }
     ]
   },
+  "repository": {},
   "scripts": {
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
@@ -67,8 +68,9 @@
     "pretest": "npm run compile && npm run lint",
     "lint": "eslint src --ext ts",
     "test": "node ./out/test/runTest.js",
-    "prepublishOnly": "vsce package -o out",
-    "build:html": "npx markdown README.md > index.html"
+    "build:extension": "vsce package -o out",
+    "build:readmeHtml": "npx markdown README.md > index.html",
+    "build": "npm run build:extension && npm run build:readmeHtml"
   },
   "dependencies": {
     "lodash": "^4.17.21"
