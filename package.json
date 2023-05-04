@@ -19,41 +19,47 @@
       "title": "nano-backend-language-support",
       "properties": {
         "nano-backend-language-support.config.di_layer_list": {
-          "type":"array",
-          "default": ["controller", "service", "manager", "dal", "dao"],
+          "type": "array",
+          "default": [
+            "controller",
+            "service",
+            "manager",
+            "dal",
+            "dao"
+          ],
           "items": {
             "type": "string"
           },
           "description": "List of DI layers to be used for the extension"
         },
-        "nano-backend-language-support.config.log_level":{
-            "type": "string",
-            "default": "INFO",
-            "enum": [
-              "INFO",
-              "DEBUG"
-            ],
-            "description": "Set the logger level"
-          }
+        "nano-backend-language-support.config.log_level": {
+          "type": "string",
+          "default": "INFO",
+          "enum": [
+            "INFO",
+            "DEBUG"
+          ],
+          "description": "Set the logger level"
         }
-      },
-      "commands": [
-        {
-          "command": "nano-backend-language-support.quotes",
-          "title": "Nano Quotes to support You"
-        },
-        {
-          "command": "nano-backend-language-support.editConfig",
-          "title": "BottleJs Extension Pack: Configure Json File"
-        }
-      ],
-      "snippets": [
-        {
-          "language": "javascript",
-          "path": "./snippets/javascript.json"
-        }
-      ]
+      }
     },
+    "commands": [
+      {
+        "command": "nano-backend-language-support.quotes",
+        "title": "Nano Quotes to support You"
+      },
+      {
+        "command": "nano-backend-language-support.editConfig",
+        "title": "BottleJs Extension Pack: Configure Json File"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "javascript",
+        "path": "./snippets/javascript.json"
+      }
+    ]
+  },
   "scripts": {
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
@@ -61,7 +67,8 @@
     "pretest": "npm run compile && npm run lint",
     "lint": "eslint src --ext ts",
     "test": "node ./out/test/runTest.js",
-    "build:extension": "npx vsce package && mv *.vsix out"
+    "prepublishOnly": "vsce package -o out",
+    "build:html": "npx markdown README.md > index.html"
   },
   "dependencies": {
     "lodash": "^4.17.21"
@@ -77,6 +84,7 @@
     "@vscode/test-electron": "^2.3.0",
     "eslint": "^8.36.0",
     "glob": "^8.1.0",
+    "markdown-to-html": "^0.0.13",
     "mocha": "^10.2.0",
     "typescript": "^4.9.5",
     "vsce": "^2.15.0"

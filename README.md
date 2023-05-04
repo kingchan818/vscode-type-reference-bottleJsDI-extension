@@ -7,6 +7,14 @@ This is the extension "nano-backend-language-support" for backend framework in N
 2. Auto Completion for bottlejs 
 3. Snippets for Nano Backend
 
+## Snippets
+1. `snippet-init-router` - Create a new router instance
+2. `snippet-init-controller` - Create a new controller instance
+3. `snippet-init-unit-test` - Create a new unit test
+4. `snippet-auditLogService-failed` - Create a new failed auditLogService
+5. `snippet-auditLogService-success` - Create a new success auditLogService
+6. `snippet-controller-func` - Create a new controller function
+
 ## Note when using the extension
 1. The extension will only work if the file is in the same folder as the bottlejs instance.
 
@@ -47,7 +55,7 @@ Here is an example of how to turn off the editor.suggest.showWords flag:
 By turning off this flag, auto-completion suggestions will appear at the top of the suggestion list, making them easier to access.
 
 
-## Release Notes
+## Latest Release Notes
 
 ### 1.0.0
 Added Snippets for Nano Backend Developers
