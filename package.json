@@ -1,6 +1,6 @@
 {
   "name": "nano-backend-language-support",
-  "displayName": "BottleJS Extension Pack",
+  "displayName": "Nano Backend Language support",
   "description": "Implementation of the GoToDefinition function for BottleJS",
   "publisher": "NanoInsure Development Team",
   "version": "1.0.0",
