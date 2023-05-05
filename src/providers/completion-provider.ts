@@ -19,8 +19,10 @@ import { Logger } from '../logger';
 export class NanoCompletionProvider implements CompletionItemProvider {
     private logger: Logger;
     public defaultPredefinedDirs = ['service', 'controller', 'manager'];
+    // mapKey is to check the fileName contain these key words
+    // result is the dir under src folder (Which dir need to find)
     public specialPredefinedDirs = [
-        { mapKey: 'client', result: 'service-client' },
+        { mapKey: 'client', result: 'service' },
         { mapKey: 'dao', result: 'data-access/model' },
         { mapKey: 'dal', result: 'data-access/service' }
     ];
